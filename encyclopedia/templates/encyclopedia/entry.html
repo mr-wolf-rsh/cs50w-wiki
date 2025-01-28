@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+
+    {% if entry is not None %}
+        {% if entry == '' %}
+            <div>
+                There is no recorded information.
+            </div>
+        {% else %}
+            {{ entry | safe }}
+        {% endif %}
+        <div style="margin-top: 5rem">
+            <a class="btn btn-dark" href="{% url 'encyclopedia:edit_entry' entry_name %}" role="button">
+                Edit Page
+            </a>
+        </div>
+    {% else %}
+        <div>
+            The requested page was not found.
+        </div>
+    {% endif %}
+
+{% endblock %}

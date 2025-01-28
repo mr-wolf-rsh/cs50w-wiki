@@ -1,0 +1,30 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+
+    {% if textarea_form %}
+        <form action="{% url 'encyclopedia:edit_entry' entry_name %}" method="POST" name="f">
+            {% csrf_token %}
+            <div class="container">
+                <h1 style="text-align: center">
+                    {{ entry_name }}
+                </h1>
+                {{ textarea_form }}
+                <div style="text-align: right; margin-top: 1rem">
+                    <button class="btn btn-dark btn-lg" type="submit">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </form>
+    {% else %}
+        <div>
+            The requested page was not found.
+        </div>
+    {% endif %}
+
+{% endblock %}

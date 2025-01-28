@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+
+    <h1>{{ title_var }}</h1>
+
+    {% if entries %}
+        <ul>
+            {% for entry in entries %}
+                <li>
+                    <a href="{% url 'encyclopedia:select_entry' entry %}">{{ entry }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div>
+            There are no entries to display.
+        </div>
+    {% endif %}
+
+{% endblock %}
